@@ -1,0 +1,17 @@
+body {
+background: radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.2), transparent 60%),
+radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.15), transparent 60%),
+linear-gradient(to bottom right, #0f172a, #1e293b);
+backdrop-filter: blur(20px);
+min-height: 100vh;
+color: white;
+font-family: 'Inter', sans-serif;     
+        }
+
+    .glow {
+box-shadow: 0 0 20px rgba(37, 99, 235, 0.4),0 0 40px rgba(59, 130, 246, 0.3);
+        }
+
+    html {
+scroll-behavior: smooth;
+}
