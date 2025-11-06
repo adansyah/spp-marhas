@@ -105,7 +105,6 @@ class SppController extends Controller
     {
         $query = Spp::with('user');
 
-        // Filter berdasarkan nama siswa / NIS
         if ($request->nama) {
             $query->whereHas('user', function ($q) use ($request) {
                 $q->where('nama', 'like', "%{$request->nama}%")
@@ -113,17 +112,14 @@ class SppController extends Controller
             });
         }
 
-        // Filter berdasarkan bulan
         if ($request->bulan) {
             $query->where('bulan', 'like', "%{$request->bulan}%");
         }
 
-        // Filter berdasarkan tahun
         if ($request->tahun) {
             $query->where('tahun', $request->tahun);
         }
 
-        // Filter berdasarkan status
         if ($request->status) {
             $query->where('status', $request->status);
         }

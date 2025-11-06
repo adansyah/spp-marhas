@@ -47,7 +47,7 @@ class DashboardController extends Controller
 
         for ($i = 1; $i <= 12; $i++) {
             $bulanLabels[] = $namaBulan[$i];
-            $dataNominal[] = $dataPerBulan[$i] ?? 0; // 0 jika belum ada pembayaran
+            $dataNominal[] = $dataPerBulan[$i] ?? 0;
         }
 
         $penghasilanBulanIni = Spp::where('status', 'lunas')
