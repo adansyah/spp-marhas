@@ -11,15 +11,12 @@ class RoleMiddleware
 {
     public function handle(Request $request, Closure $next, ...$roles)
     {
-        // Jika belum login
         if (!Auth::check()) {
             return redirect()->route('login')->with('error', 'Silakan login terlebih dahulu.');
         }
 
-        // Ambil role user
         $userRole = Auth::user()->role;
 
-        // Cek apakah role cocok
         if (!in_array($userRole, $roles)) {
             return response()->view('errors.akses', [], 403);
         }
