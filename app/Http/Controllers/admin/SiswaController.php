@@ -12,9 +12,10 @@ class SiswaController extends Controller
 
     public function index()
     {
-        $siswa = User::where('role', 'siswa')->get();
+        $siswa = User::where('role', 'siswa')->latest()->get();
         return view('admin.siswa.siswa', compact('siswa'));
     }
+
 
     public function create()
     {
@@ -28,7 +29,7 @@ class SiswaController extends Controller
             'nama' => 'required|string|max:100',
             'kelas' => 'required|string|max:50',
             'alamat' => 'required|string',
-            'no_telp' => 'nullable|string|max:25',
+            'no_telp' => 'nullable|numeric|digits_between:10,13',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6|confirmed',
         ]);
@@ -64,7 +65,7 @@ class SiswaController extends Controller
             'nama' => 'required|string|max:100',
             'kelas' => 'required|string|max:50',
             'alamat' => 'required|string',
-            'no_telp' => 'nullable|string|max:25',
+            'no_telp' => 'nullable|numeric|digits_between:10,13',
             'email' => 'required|email|unique:users,email,' . $siswa->id,
             'password' => 'nullable|min:6|confirmed',
         ]);

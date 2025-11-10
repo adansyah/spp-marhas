@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\admin\LaporanController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\admin\SppController as AdminSppController;
 use App\Http\Controllers\admin\AuthController as AdminAuthController;
@@ -20,6 +21,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::delete('data-spp/{id}', [AdminSppController::class, 'destroy'])->name('admin.data-spp.destroy');
     Route::put('data-spp/{id}/status', [AdminSppController::class, 'updateStatus'])->name('admin.data-spp.status');
     Route::post('logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+    Route::get('laporan', [LaporanController::class, 'laporan'])->name('laporan.index');
+    Route::get('laporan-spp/export/{id}', [LaporanController::class, 'cetakLaporan'])->name('admin.laporan-spp.export');
 });
 
 //Siswa
@@ -27,7 +30,13 @@ Route::middleware(['auth', 'role:siswa'])->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('dashboard/detail/{id}', [DashboardController::class, 'detail'])->name('detail');
     Route::post('dashboard/detail/{id}/bayar', [DashboardController::class, 'bayar'])->name('detail.bayar');
+    Route::post('/spp/{id}/lunas', [DashboardController::class, 'markAsLunas'])->name('spp.markAsLunas');
+    Route::get('/cetak/{id}', [DashboardController::class, 'cetak'])->name('cetak');
 });
+
+
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -38,7 +47,6 @@ Route::post('prosesLogin', [AuthController::class, 'login'])->name('prosesLogin'
 Route::post('register', [AuthController::class, 'store'])->name('register.store');
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('register', [AuthController::class, 'showRegister'])->name('register');
-
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 

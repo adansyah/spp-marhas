@@ -84,6 +84,16 @@
                 </svg>
                 Data SPP
             </a>
+            <a href="/admin/laporan"
+                class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-indigo-600/70 transition
+                {{ request()->is('admin/laporan') ? 'bg-indigo-600 text-white' : 'hover:bg-indigo-600/70 text-gray-300' }}">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 8c1.657 0 3-1.343 3-3S13.657 2 12 2 9 3.343 9 5s1.343 3 3 3zm0 4c-3.866 0-7 1.343-7 3v3h14v-3c0-1.657-3.134-3-7-3z" />
+                </svg>
+                Laporan
+            </a>
         </nav>
 
         <div class="p-4 border-t border-gray-800">

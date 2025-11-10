@@ -15,16 +15,17 @@ class DashboardController extends Controller
     {
         $user = User::where('role', 'siswa')->count();
 
+        // Ambil data SPP lunas dari tahun ini
         $grafikSPP = Spp::select(
             DB::raw('MONTH(created_at) as bulan'),
-            DB::raw('SUM(nominal) as total'),
-            DB::raw('MIN(created_at) as tanggal')
+            DB::raw('SUM(nominal) as total')
         )
             ->where('status', 'lunas')
             ->whereYear('created_at', Carbon::now()->year)
             ->groupBy(DB::raw('MONTH(created_at)'))
             ->orderBy(DB::raw('MONTH(created_at)'))
-            ->get();
+            ->get()
+            ->keyBy('bulan');
 
         $namaBulan = [
             1 => 'Jan',
@@ -41,15 +42,17 @@ class DashboardController extends Controller
             12 => 'Des'
         ];
 
+        // Siapkan array untuk chart
         $bulanLabels = [];
         $dataNominal = [];
         $dataPerBulan = $grafikSPP->pluck('total', 'bulan')->toArray();
 
         for ($i = 1; $i <= 12; $i++) {
             $bulanLabels[] = $namaBulan[$i];
-            $dataNominal[] = $dataPerBulan[$i] ?? 0;
+            $dataNominal[] = $grafikSPP[$i]->total ?? 0;
         }
 
+        // Total penghasilan bulan ini
         $penghasilanBulanIni = Spp::where('status', 'lunas')
             ->whereMonth('created_at', Carbon::now()->month)
             ->whereYear('created_at', Carbon::now()->year)

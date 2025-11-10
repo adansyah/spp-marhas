@@ -92,15 +92,17 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                     <label class="block text-sm font-semibold mb-1">Telepon</label>
-                    <input type="text" id="regtelepon" name="no_telp" value="{{ old('no_telp') }}"
+                    <input type="tel" id="regtelepon" name="no_telp" value="{{ old('no_telp') }}"
                         class="w-full px-4 py-2 rounded-lg bg-gray-900 border 
-                @error('no_telp') border-red-500 @else border-gray-700 @enderror 
-                focus:ring-2 focus:ring-blue-400 focus:outline-none"
-                        placeholder="Telepon" required />
+               @error('no_telp') border-red-500 @else border-gray-700 @enderror 
+               focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                        placeholder="Telepon" required pattern="[0-9]*" inputmode="numeric"
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
                     @error('no_telp')
                         <p class="text-red-400 text-sm mt-1">{{ $message }}</p>
                     @enderror
                 </div>
+
 
                 <div>
                     <label class="block text-sm font-semibold mb-1">Email</label>

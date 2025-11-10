@@ -14,7 +14,9 @@ class Spp extends Model
         'tahun',
         'nominal',
         'keterangan',
-        'status'
+        'status',
+        'order_id'
+
     ];
 
     // 🔗 Relasi ke user

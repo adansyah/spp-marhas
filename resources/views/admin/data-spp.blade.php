@@ -3,16 +3,13 @@
 @section('title', 'Data SPP')
 
 @section('content')
-    <div class="p-4 md:p-6">
-
+    <div class="p-4 md:p-2">
         <!-- 🔍 FILTER -->
         <form method="GET"
             class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-8 bg-gray-900/60 p-5 rounded-2xl border border-gray-700/40">
             <h2 class="text-xl font-bold text-indigo-400 flex items-center gap-2 mb-2 md:mb-0">
 
-
             </h2>
-
             <div class="flex flex-wrap gap-3">
                 <input type="text" name="nama" placeholder="Nama Siswa" value="{{ request('nama') }}"
                     class="bg-gray-800/70 text-white rounded-xl px-4 py-2" />
@@ -36,7 +33,7 @@
                 <select name="status" class="bg-gray-800/70 text-white rounded-xl px-4 py-2">
                     <option value="">Pilih Status</option>
                     <option value="lunas" {{ request('status') == 'lunas' ? 'selected' : '' }}>Lunas</option>
-                    <option value="belum lunas" {{ request('status') == 'belum lunas' ? 'selected' : '' }}>Belum Lunas
+                    <option value="belum lunas" {{ request('status') == 'belum lunas' ? 'selected' : '' }}>Menunggu
                     </option>
                 </select>
 
@@ -56,7 +53,7 @@
                         <th class="px-6 py-3 text-left">Bulan</th>
                         <th class="px-6 py-3 text-left">Tahun</th>
                         <th class="px-6 py-3 text-left">Nominal</th>
-                        <th class="px-6 py-3 text-left">Status</th>
+                        <th class="px-4 py-3 text-left">Status</th>
                         <th class="px-6 py-3 text-left">Tanggal</th>
                         <th class="px-6 py-3 text-center">Aksi</th>
                     </tr>
@@ -68,11 +65,12 @@
                             <td class="px-6 py-4">{{ $item->bulan }}</td>
                             <td class="px-6 py-4">{{ $item->tahun }}</td>
                             <td class="px-6 py-4">Rp {{ number_format($item->nominal, 0, ',', '.') }}</td>
-                            <td class="px-6 py-4">
-                                <span
-                                    class="{{ $item->status === 'lunas' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-rose-500/20 text-rose-400' }} px-3 py-1 rounded-full text-xs font-medium">
-                                    {{ ucfirst($item->status) }}
-                                </span>
+                            <td class="px-4 py-3">
+                                @if ($item->status === 'lunas')
+                                    <span class="text-emerald-400">Lunas</span>
+                                @else
+                                    <span class="text-rose-400">Menunggu</span>
+                                @endif
                             </td>
                             <td class="px-6 py-4">{{ $item->created_at->translatedFormat('d F Y') }}</td>
                             <td class="px-6 py-4 text-center">
@@ -81,14 +79,14 @@
                                         @csrf
                                         @method('PUT')
                                         <button type="button"
-                                            class="bg-emerald-600 hover:bg-emerald-500 px-3 py-1 rounded-lg text-white text-xs flex items-center gap-1 update-status-btn"
+                                            class="bg-emerald-600 hover:bg-emerald-500 px-3 py-1 rounded-lg text-white text-xs flex items-center  update-status-btn"
                                             data-id="{{ $item->id }}">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none"
                                                 viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
                                                     d="M15.232 5.232l3.536 3.536M9 11l6 6H3v-6l6-6z" />
                                             </svg>
-                                            Ubah Status
+                                            UbahStatus
                                         </button>
                                     </form>
 

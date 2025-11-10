@@ -25,7 +25,7 @@ class AuthController extends Controller
             'nama' => 'required|string|max:100',
             'kelas' => 'required|string|max:50',
             'alamat' => 'required|string',
-            'no_telp' => 'nullable|string|max:25',
+            'no_telp' => 'nullable|numeric|digits_between:10,13',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6|confirmed',
         ]);

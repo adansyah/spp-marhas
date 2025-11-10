@@ -78,23 +78,89 @@
         <section id="data-siswa"
             class="max-w-5xl mx-auto mt-24 bg-gray-800/70 backdrop-blur-lg rounded-2xl shadow-lg p-6 sm:p-8"
             data-aos="fade-up">
-            <h3 class="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text mb-6">
-                📘 Data Siswa
+
+            <h3
+                class="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text mb-6 text-center">
+                Profil Siswa
             </h3>
+
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-gray-300">
-                <p><strong>Nama:</strong> {{ Auth::user()->nama }} </p>
-                <p><strong>NIS:</strong> {{ AUth::user()->nis }}</p>
-                <p><strong>Kelas:</strong> {{ Auth::user()->kelas }}</p>
-                <p><strong>Alamat:</strong> {{ Auth::user()->alamat }}</p>
+                <!-- Nama -->
+                <div
+                    class="flex items-center gap-3 bg-gray-700/50 p-4 rounded-lg shadow-sm hover:bg-gray-700 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-400" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M5.121 17.804A6 6 0 1112 18a6 6 0 01-6.879-.196zM12 14a4 4 0 100-8 4 4 0 000 8z" />
+                    </svg>
+                    <p><strong>Nama:</strong> {{ Auth::user()->nama }}</p>
+                </div>
+
+                <!-- NIS -->
+                <div
+                    class="flex items-center gap-3 bg-gray-700/50 p-4 rounded-lg shadow-sm hover:bg-gray-700 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-400" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3M3 11h18M5 19h14v-2H5v2z" />
+                    </svg>
+                    <p><strong>NIS:</strong> {{ Auth::user()->nis }}</p>
+                </div>
+
+                <!-- Kelas -->
+                <div
+                    class="flex items-center gap-3 bg-gray-700/50 p-4 rounded-lg shadow-sm hover:bg-gray-700 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-400" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 14l9-5-9-5-9 5 9 5zM12 14v7M12 14L3 9m9 5l9-5" />
+                    </svg>
+                    <p><strong>Kelas:</strong> {{ Auth::user()->kelas }}</p>
+                </div>
+
+                <!-- Alamat -->
+                <div
+                    class="flex items-center gap-3 bg-gray-700/50 p-4 rounded-lg shadow-sm hover:bg-gray-700 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-400" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <p><strong>Alamat:</strong> {{ Auth::user()->alamat }}</p>
+                </div>
+
+                <!-- Email -->
+                <div
+                    class="flex items-center gap-3 bg-gray-700/50 p-4 rounded-lg shadow-sm hover:bg-gray-700 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-400" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M16 12h.01M8 12h.01M12 16v-4M21 12c0 4.418-4.03 8-9 8s-9-3.582-9-8 4.03-8 9-8 9 3.582 9 8z" />
+                    </svg>
+                    <p><strong>Email:</strong> {{ Auth::user()->email }}</p>
+                </div>
+
+                <!-- No. Telp -->
+                <div
+                    class="flex items-center gap-3 bg-gray-700/50 p-4 rounded-lg shadow-sm hover:bg-gray-700 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-400" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 3h6v6h-6V3zM15 15h6v6h-6v-6zM3 15h6v6H3v-6z" />
+                    </svg>
+                    <p><strong>No. Telp:</strong> {{ Auth::user()->no_telp }}</p>
+                </div>
             </div>
         </section>
+
 
         <!-- 🔹 Riwayat Pembayaran -->
         <section id="riwayat"
             class="max-w-5xl mx-auto mt-20 mb-24 bg-gray-800/70 backdrop-blur-lg rounded-2xl shadow-lg p-6 sm:p-8"
             data-aos="fade-up">
-            <h3 class="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text mb-6">
-                🧾 Riwayat Pembayaran
+            <h3
+                class="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text mb-6 text-center">
+                Riwayat Tagihan SPP
             </h3>
 
             <!-- 🔹 Filter -->
@@ -109,7 +175,7 @@
                     class="flex-1 bg-gray-900 border border-gray-700 text-gray-200 rounded-lg p-2 focus:ring-2 focus:ring-blue-400">
                     <option value="">Semua Status</option>
                     <option value="lunas">Lunas</option>
-                    <option value="belum lunas">belum lunas</option>
+                    <option value="Menunggu">Menunggu</option>
                 </select>
             </div>
 
@@ -135,13 +201,9 @@
                                 <td class="px-4 py-3">Rp {{ number_format($item->nominal, 0, ',', '.') }}</td>
                                 <td class="px-4 py-3">
                                     @if ($item->status === 'lunas')
-                                        <span
-                                            class="inline-block px-3 py-1 text-sm font-semibold text-green-100 bg-green-600/70 rounded-full">
-                                            Lunas</span>
+                                        <span class="text-emerald-400">Lunas</span>
                                     @else
-                                        <span
-                                            class="inline-block px-3 py-1 text-sm font-semibold text-orange-100 bg-orange-500/70 rounded-full">
-                                            Belum Lunas</span>
+                                        <span class="text-rose-400">Menunggu</span>
                                     @endif
                                 </td>
                                 <td class="px-4 py-3">{{ $item->created_at->translatedFormat('d M Y') }}</td>
@@ -153,6 +215,17 @@
                                         <a href="{{ route('detail', $item->id) }}"
                                             class="bg-red-500 hover:bg-red-600 text-white font-semibold px-3 py-1 rounded-lg text-xs cursor-pointer">
                                             Bayar
+                                        </a>
+                                    @elseif($item->status === 'lunas')
+                                        <a href="{{ route('cetak', $item->id) }}" target="_blank"
+                                            class="inline-flex items-center justify-center gap-1 bg-amber-500 hover:bg-amber-600 text-white text-xs font-semibold px-3 py-1 rounded-lg transition">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                viewBox="0 0 24 24" class="h-4 w-4" stroke-width="1.5"
+                                                stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0 1 10.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0 .229 2.523a1.125 1.125 0 0 1-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0 0 21 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 0 0-1.913-.247M6.34 18H5.25A2.25 2.25 0 0 1 3 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 0 1 1.913-.247m10.5 0a48.536 48.536 0 0 0-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5Zm-3 0h.008v.008H15V10.5Z" />
+                                            </svg>
+                                            <span>Cetak</span>
                                         </a>
                                     @endif
                                 </td>

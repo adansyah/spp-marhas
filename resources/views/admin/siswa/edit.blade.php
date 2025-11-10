@@ -63,9 +63,14 @@
             <!-- No Telp -->
             <div>
                 <label class="block text-sm font-semibold mb-1 text-gray-300">No. Telepon</label>
-                <input type="text" name="no_telp" value="{{ old('no_telp', $siswa->no_telp) }}"
-                    placeholder="Contoh: 081234567890"
-                    class="w-full bg-gray-800/80 border border-gray-700 rounded-lg px-4 py-2 text-gray-100 focus:ring-2 focus:ring-indigo-400 outline-none transition">
+                <input type="tel" id="regtelepon" name="no_telp" value="{{ old('no_telp', $siswa->no_telp) }}"
+                    class="w-full bg-gray-800/80 borde rounded-lg px-4 py-2 text-gray-100 focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 outline-none transition 
+               @error('no_telp') border-red-500 @else border-gray-700 @enderror"
+                    placeholder="Telepon" required pattern="[0-9]*" inputmode="numeric"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
+                @error('no_telp')
+                    <p class="text-red-400 text-sm mt-1">{{ $message }}</p>
+                @enderror
             </div>
 
             <!-- Password -->

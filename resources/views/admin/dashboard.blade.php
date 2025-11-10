@@ -21,7 +21,8 @@
     </div>
 
     <div class="mt-10 bg-gray-900 p-6 rounded-2xl shadow-lg">
-        <h3 class="text-lg font-semibold mb-4">Grafik Pembayaran SPP</h3>
+        <h3 class="text-lg font-semibold mb-4">Grafik Pembayaran SPP {{ \Carbon\Carbon::now()->translatedFormat('Y') }}
+        </h3>
         <canvas id="chartSPP" height="120"></canvas>
     </div>
 
@@ -42,6 +43,7 @@
                 }]
             },
             options: {
+                responsive: true,
                 plugins: {
                     legend: {
                         display: false
